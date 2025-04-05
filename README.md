@@ -243,8 +243,9 @@ date support up to 31-12-2079.
 The bug fixes for the interrupt handlers have been applied to `kidvr2.asm` (the
 keyboard interrupt handler) and to `clock2.asm` (the clock tick interrupt handler).
 
-To select the version level (H or L) and the keyboard language (US/FR/GE), I added a
-configuration file `BUILDVER/ASM` where the conditional assembly flags can be configured.
+To select the version level (A to N) and the keyboard language (US/FR/GE) (Model 4 only),
+I added a configuration file `BUILDVER/ASM` where the conditional assembly flags can be 
+configured.
 
 ```
 @MOD2   EQU     -1              ; Set MOD2 true
