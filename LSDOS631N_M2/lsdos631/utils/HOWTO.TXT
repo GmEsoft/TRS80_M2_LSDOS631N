@@ -1,24 +1,3 @@
-LSDOS631N for TRS-80 Model II
-=============================
-
-TRS-80 LS-DOS 6.3.1 Level M for Model II source files with bug fixes and date support up to 2079
-------------------------------------------------------------------------------------------------
-
-This repository contains the source files to build a working version of LS-DOS 6.3.1 Level N for Model II.
-
-This version is based on the official LS-DOS 6.3.1 Level-1A for Model II, with all patches issued for
-the Model 4 version up to Level-1L. I applied 2 additional patches to fix some bugs in the Keyboard and
-Tick interrupt handlers, leading to a system crash if the stack pointer was above x'F800'. The interrupt
-handlers were enabling the Video RAM in the area x'F800'-x'FFFF' without moving SP to a safe location,
-and made the system crash.
-
-I took some Model II code from the archive from Frank Durda IV at this address (the original URL seems now invalid):
-http://archives.oldskool.org/pub/drivers/Tandy/nemesis.lonestar.org/computers/tandy/software/os/logical_systems/lsdos6/src631/
-
-The original source files come from the archive `Source code for LS-DOS 6.3.1H (19xx)(-)[DSK]`
-and were made available by Peter W. Cervasio. Here is the text of the `HowTo.txt` notice included in the archive:
-
-```
 LS-DOS 6.3.1 Source Code
 ========================
 
@@ -28,10 +7,10 @@ The permission statement from Tim Mann's web page says the following
 about the MISOSYS software available for download:
 
 =====================================================================
-Roy Soltoff holds the copyright to the software and documentation in
-the list below; notices that name other authors are outdated. Roy
-grants free permission to everyone to download and use this software
-and documentation and to redistribute it to others, provided this
+Roy Soltoff holds the copyright to the software and documentation in 
+the list below; notices that name other authors are outdated. Roy 
+grants free permission to everyone to download and use this software 
+and documentation and to redistribute it to others, provided this 
 notice is retained. All other rights are reserved.
 =====================================================================
 
@@ -50,17 +29,17 @@ The files in this package are the complete source code to the LS-DOS
 version 6.3.1 operating system for the TRS-80 Model 4.  I started by
 typing in the source listings from "The Source".  I wound up moving
 to LS-DOS 6.3.1 in the middle of the first part of the SYSx/ASM set of
-files.  I also realized that I should be using MISOSYS' PRO-DUCE to
+files.  I also realized that I should be using MISOSYS' PRO-DUCE to 
 generate the opcodes, and then massaging the resulting /ASM files until
-they have meaningful labels and comments.  For the most part, the
+they have meaningful labels and comments.  For the most part, the 
 comments from "The Source", volumes 1 through 3, are what you will see,
-except I may have changed the wording somewhat.  When I was doing this
-I had NO idea that it would wind up on Tim Mann's web page with the
+except I may have changed the wording somewhat.  When I was doing this 
+I had NO idea that it would wind up on Tim Mann's web page with the 
 rest of the MISOSYS software.  Because of that, I was not strict in
 my typing of the comments, and didn't make sure that every single
 line had the exact same wording as "The Source".  Where there are
 major changes in version 6.3.x, as compared to what was listed for
-version 6.2, I have tried to comment the code as well as I can figure
+version 6.2, I have tried to comment the code as well as I can figure 
 it out.
 
 There may be a few places where a piece of code says isn't commented
@@ -72,22 +51,22 @@ These flag the start and end of code that's different from the code
 listed in "The Source".  Not every change has this flag, though.
 
 Several files have much more commenting than the original listing had.
-This is especially true of the SYSINFO sector in SYSRES/ASM where I
-have documented how backup-limited diskettes work.  This was done
+This is especially true of the SYSINFO sector in SYSRES/ASM where I 
+have documented how backup-limited diskettes work.  This was done 
 for informational purposes only, by the way.
 
 In addition, I have included the new logo which I use on my own system.
-If you look in SYSRES/ASM and change the equate as documented there,
+If you look in SYSRES/ASM and change the equate as documented there, 
 you can try out my changes.  They don't adversely affect the operation
 of the system in any way, as far as I have been able to tell.  It just
 makes the bootup look a little nicer.  Some may have flashbacks to the
 boot screen of DOSPLUS, but that's their problem.
 
 But wait, there's more!  As an extra added bonus for downloading now,
-I have included the /JCL files I used to reassemble the operating
-system under Jeff Vavasour's wonderful Model 4 emulator (which is
-available from Computer News 80).  These JCL files can route the
-assembler's listing to /PRN files and then export them to MSDOS as
+I have included the /JCL files I used to reassemble the operating 
+system under Jeff Vavasour's wonderful Model 4 emulator (which is 
+available from Computer News 80).  These JCL files can route the 
+assembler's listing to /PRN files and then export them to MSDOS as 
 each file is completed, if you choose.  You'll probably need to do
 some editing of them to reflect your systems directory structure.
 
@@ -187,7 +166,7 @@ From a DOS ready prompt, enter "DO BUILD631".  The parameters this
 If you didn't supply the (ALL) parameter, you'll want to enter the
 command "DO BUILDLIB" to assemble the files that make up the SYS6, SYS7
 and SYS8 library overlays and generate the ISAM files using my
-BLDLIBS/CMD program.  There is some documentation on the BLDLIBS
+BLDLIBS/CMD program.  There is some documentation on the BLDLIBS 
 program, if you want to know more about it.  See the file BLDLIBS/TXT
 for information.  You'll also need to "DO BUILDUTL" to assemble all of
 the system utilities.
@@ -231,68 +210,3 @@ That's it.
 
 Best regards,
 Pete Cervasio (cervasio@airmail.net)
-```
-
-Pete Cervasio's archive corresponds to the US flavor of LS-DOS 6.3.1H for Models 4
-and 4P.
-
-I incorporated the changes by Matthew Reed, converting his patch files to
-Z-80 code with conditional assembly. This corresponds to LS-DOS 6.3.1L, and allows for
-date support up to 31-12-2079.
-
-The bug fixes for the interrupt handlers have been applied to `kidvr2.asm` (the
-keyboard interrupt handler) and to `clock2.asm` (the clock tick interrupt handler).
-
-To select the version level (H or L) and the keyboard language (US/FR/GE), I added a
-configuration file `BUILDVER/ASM` where the conditional assembly flags can be configured.
-
-```
-@MOD2   EQU     -1              ; Set MOD2 false
-@MOD4   EQU     -0              ; Set MOD4 true
-;
-@DOSVER EQU     631             ; Set DOS Version 6.3.1
-@DOSLVL EQU     'N'             ; Set DOS Level L-?(-2079) or A-H(-2011)
-;
-;       Define switches for international or domestic
-;
-@GERMAN EQU     0               ; -1 to select German keyboard layout
-@FRENCH EQU     0               ; -1 to select French keyboard layout
-;
-        END
-```
-
-I also added the missing `END` statements at the end of the `/ASM` files. This was causing
-errors during assembly when those files were included using `*GET` statements.
-
-
-The source files are packaged in plain ASCII files in the folder `LSDOS631N_M2/lsdos631`.
-
-The instructions to build the system disk images are detailed [HERE](LSDOS631N_M2/BUILD.md).
-
-Some additional tools are needed to build the system:
-- [TRS80gp](http://48k.ca), a TRS-80 emulator by George Phillips, to assemble the source code and 
-  create the DMK images. The emulator can be downloaded by running the script `get_trs80gp.sh`.
-- [HxC Floppy Emulator software](https://hxc2001.com/download/floppy_drive_emulator/) from HxC2001, by
-  Jean-Francois Del Nero, to convert the DMK images to HFE images for the HxC Floppy Emulator for
-  the real Model II hardware. The software can be downloaded by running the script `get_hxcfe.sh`.
-
-That's it.  Enjoy !
-
-Best regards,
-
-Michel Bernard (michel_bernard at icloud.com)
-
-
-Credits
--------
-
-- **Frank Durda IV** for the LS-DOS 6.3.1 Source Code Restoration Project;
-- **George Phillips** for the TRS80gp emulator, the only emulator to my knowledge capable of
-  emulating TRS-80 Models II, 12, 16 and 6000;
-- **Pete Cervasio** for the original LS-DOS 6.3.1 complete build system;
-- **Jean-Francois Del Nero** for the HxC-2001 Floppy Emulator software;
-- **Erwin Waterlander**, **Christian Wurll**, **Bernd Johannes Wuebben** and **Benjamin Lin**
-  for the `dos2unix` et al. text format conversion tools;
-- **Matt Boytim** for the testing of the new LS-DOS 6.3.1N system on real hardware.
-
-Many thanks to all of them !

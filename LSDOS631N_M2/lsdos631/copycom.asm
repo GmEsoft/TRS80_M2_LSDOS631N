@@ -1,0 +1,1 @@
+; COPYCOM/ASM - File for Copyright COMment block*GET	BUILDVER	IF	@BLD631	COM	'<(C) 1982-4,6,90 MISOSYS>'	ELSE	COM	'<*(C) 1986,LSI>'	ENDIF;	END
