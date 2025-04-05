@@ -247,8 +247,8 @@ To select the version level (H or L) and the keyboard language (US/FR/GE), I add
 configuration file `BUILDVER/ASM` where the conditional assembly flags can be configured.
 
 ```
-@MOD2   EQU     -1              ; Set MOD2 false
-@MOD4   EQU     -0              ; Set MOD4 true
+@MOD2   EQU     -1              ; Set MOD2 true
+@MOD4   EQU     -0              ; Set MOD4 false
 ;
 @DOSVER EQU     631             ; Set DOS Version 6.3.1
 @DOSLVL EQU     'N'             ; Set DOS Level L-?(-2079) or A-H(-2011)
