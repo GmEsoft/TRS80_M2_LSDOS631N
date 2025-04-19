@@ -5,6 +5,7 @@ LS-DOS 6 for Model II
 Info
 ----
 
+- Master password in DIR/SYS at offset CE-CF (LSB-MSB)
 - Model II LS-DOS Master Password: `system6`
 - LS-DOS Old Master Password: `lsidos`
 - (Almost) complete source code [here](http://archives.oldskool.org/pub/drivers/Tandy/nemesis.lonestar.org/computers/tandy/software/os/logical_systems/lsdos6/src631/).

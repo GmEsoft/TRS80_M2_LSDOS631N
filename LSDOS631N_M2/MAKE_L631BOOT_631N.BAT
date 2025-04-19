@@ -7,7 +7,7 @@ if exist m2-lsdos-util.dmk set DISK1=m2-lsdos-util.dmk
 set DISKS=-d0ds -d L631BOOT_631N.DSK -d %DISK1%
 set FREHD=-frehd-dir frehd
 @echo on
-start %TRS80GP% -haste -m2 -50 -vs -win full %SOUND% %DISKS% %FREHD% %GRAF% -itime 0 ^
+start /wait %TRS80GP% -haste -m2 -50 -vs -win full %SOUND% %DISKS% %FREHD% %GRAF% -itime 0 ^
  -iw "Date" -iy "%%m/%%d/%%y\r%%h:%%i:%%s\r" ^
  -iw "Ready" -i "ATTRIB :0 (NAME=\"L631BOOT\")\r" ^
  -iw "Ready" -i "IMPORT2 -n IMPTOOLS.JCL\r" ^

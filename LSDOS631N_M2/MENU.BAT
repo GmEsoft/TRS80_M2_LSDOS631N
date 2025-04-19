@@ -1,5 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
+set DIR=%CD%
 :menu
 echo.
 echo *** M E N U ***
@@ -28,6 +29,7 @@ for /F "delims=" %%L in ( farmenu.ini ) do (
 			echo !L!
 			call !L!
 			@echo off
+			cd %DIR%
 		)
 	)
 
