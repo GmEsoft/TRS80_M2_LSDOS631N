@@ -4,7 +4,7 @@ set SOUND=
 set DISK1=:lu2
 if exist m2-lsdos-util.dmk set DISK1=m2-lsdos-util.dmk
 
-set DISKS=-d :ld2 -d %DISK1% -d2ds -d dmk-ds#77 -d3ds -d dmk-ds#77
+set DISKS=-d0ds -d L631BOOT_631A.DSK -d %DISK1% -d2ds -d dmk-ds#77 -d3ds -d dmk-ds#77
 set FREHD=-frehd-dir frehd
 call :del trs80-disk*.dsk
 

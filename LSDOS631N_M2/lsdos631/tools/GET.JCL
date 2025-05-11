@@ -1,7 +1,4 @@
 . GET/JCL - Get LS-DOS system from Model II L631BIN
-system (drive=3,disable,driver="FLOPPY")
-1
-4
 purge system/jcl:2 (q=n)
 system (drive=0,wp)
 system (drive=1,wp)
