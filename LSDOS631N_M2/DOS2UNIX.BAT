@@ -2,7 +2,7 @@
 set FREHD=%~dp0frehd
 set DOS2UNIX=%~dp0Tools\dos2unix
 if not exist %FREHD% mkdir %FREHD%
-cd lsdos631
+pushd lsdos631
 for %%F in (*.ASM) DO (
   %DOS2UNIX% -n -k -f %%F %FREHD%\%%F
 )
@@ -24,3 +24,4 @@ for %%F in (*.ASM *.CCC *.DAT *.FIX *.JCL *.TXT) DO (
   %DOS2UNIX% -n -k -f %%F %FREHD%\%%F
 )
 copy *.CMD %FREHD%
+popd
