@@ -105,9 +105,9 @@ How-to
       - Press `CTRL`-`F` and type `BUILDVER/ASM` to save the updated file;
       - Press `ESC` then `=` followed by `ENTER` to exit TED.
     - Run: `DO BUILD` to build the /CMD files with assembly
-      listing output to /PRN files (exported). Build time: ca. ?? minutes.
+      listing output to /PRN files (exported). Build time: ca. 30 minutes.
     - Run: `DO BUILDNL` to build the /CMD files without assembly
-      listing output (faster). Build time: ca. 10 minutes.
+      listing output (faster). Build time: ca. 12 minutes.
 
 
 ### 6. Make LS-DOS 6.3.1 System Disk [L631NEW2] using LS-DOS 6.3.1A
